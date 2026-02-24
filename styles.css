@@ -56,7 +56,7 @@ body {
 }
 
 .image-slider .slide:first-child {
-    object-position: center 75%;
+    object-position: center 0%;
 }
 
 /* Overlay with Gradient */
