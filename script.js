@@ -74,33 +74,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize image slider
     const slider = new ImageSlider();
     
-    // Button interaction with smooth effect
-    const heroBtn = document.querySelector('.hero-btn');
-    heroBtn.addEventListener('click', () => {
-        // Add ripple effect
-        const ripple = document.createElement('div');
-        ripple.style.cssText = `
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            width: 20px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            animation: rippleEffect 0.6s ease-out;
-            pointer-events: none;
-        `;
-        heroBtn.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-        
-        // Add your navigation logic here
-        console.log('Explore button clicked!');
-        // Example: window.location.href = 'explore.html';
-    });
+    // Handle Explore Now button with fire transition
+    const exploreBtn = document.querySelector('a.hero-btn');
+    if (exploreBtn) {
+        exploreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            triggerFireTransition(exploreBtn.href);
+        });
+    }
     
-    // Add CSS for ripple animation dynamically
+    // Handle ripple effect for Contact Us button
+    const contactBtn = document.querySelector('.collaborate-btn');
+    if (contactBtn) {
+        contactBtn.addEventListener('click', () => {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                width: 20px;
+                height: 20px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                animation: rippleEffect 0.6s ease-out;
+                pointer-events: none;
+            `;
+            contactBtn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    }
+    
+    // Add CSS for animations dynamically
     const style = document.createElement('style');
     style.textContent = `
         @keyframes rippleEffect {
@@ -111,6 +117,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
+});
+
+// Fire Strike Transition Function
+function triggerFireTransition(targetUrl) {
+    const fireOverlay = document.getElementById('fireStrike');
+    
+    if (!fireOverlay) {
+        // If on project details page, just navigate
+        window.location.href = targetUrl;
+        return;
+    }
+    
+    // Trigger fire animation
+    fireOverlay.style.animation = 'fireStrikeAnimation 1.8s ease-out forwards';
+    
+    // Navigate after fire animation completes
+    setTimeout(() => {
+        window.location.href = targetUrl;
+    }, 1800);
+}
     
     // Smooth scroll reveal for content (optional enhancement)
     const observerOptions = {

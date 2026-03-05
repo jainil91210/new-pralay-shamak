@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pralay Shamak - Autonomous Firefighting Robot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            background: #1a0f0f;
+            color: #fff;
+            animation: fadeInDetails 1s ease-out both;
+        }
+
+        @keyframes fadeInDetails {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-header {
+            padding: 60px 30px;
+            text-align: center;
+            position: relative;
+            animation: fadeInDetails 0.8s ease-out both;
+        }
+
+        .project-header h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff4500 50%, #e63946 75%, #d62828 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(255, 107, 53, 0.4),
+                0 0 60px rgba(230, 57, 70, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-home-link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .hero-home-link:hover {
+            color: inherit;
+        }
+
+        .hero-home-link:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.55);
+            outline-offset: 6px;
+            border-radius: 4px;
+        }
+
+        .project-header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            animation: fadeInSection 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.6s; }
+        .section:nth-child(2) { animation-delay: 0.9s; }
+        .section:nth-child(3) { animation-delay: 1.2s; }
+        .section:nth-child(n+4) { animation-delay: 1.5s; }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #ff6b35;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 15px;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: #f7931e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .team-box {
+            background: rgba(255, 107, 53, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .team-member {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .team-member strong {
+            color: #ff6b35;
+        }
+
+        .achievement-box {
+            background: rgba(247, 147, 30, 0.15);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #f7931e;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .achievement-box strong {
+            color: #f7931e;
+            font-size: 1.2rem;
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .capability-card {
+            background: rgba(255, 69, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .capability-card h4 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .capability-card p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .project-header {
+                padding: 40px 20px;
+            }
+
+            .project-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .section h3 {
+                font-size: 1.4rem;
+            }
+
+            .content-container {
+                padding: 40px 20px;
+            }
+
+            .back-button {
+                top: 12px;
+                left: 12px;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="project-header">
+        <h1><a href="index.html" class="hero-home-link">Pralay Shamak</a></h1>
+        <p>Autonomous Firefighting and Rescue Robot - Innovating Safety Through Technology</p>
+    </div>
+
+    <div class="content-container">
+        <a href="index.html" class="back-button" aria-label="Back to Home">&larr;</a>
+
+        <!-- Project Overview Section -->
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>Pralay Shamak is an autonomous firefighting and rescue robot developed by two innovative students to address the critical need for advanced fire response systems in India. The project was inspired by tragic fire incidents and has received national recognition for its groundbreaking technology and real-world applications.</p>
+            
+            <h3>Inspiration & Motivation</h3>
+            <p>The project was inspired by two major fire tragedies in India that highlighted the urgent need for automated fire response systems:</p>
+            <ul class="feature-list">
+                <li><strong>Surat Takshashila Fire</strong> - A devastating incident that resulted in significant loss of life</li>
+                <li><strong>Rajkot TRP Game Zone Fire</strong> - Another tragedy that demonstrated the limitations of manual firefighting in emergency situations</li>
+            </ul>
+        </div>
+
+        <!-- Developer & Team Section -->
+        <div class="section">
+            <h2>Development Team</h2>
+            <div class="team-box">
+                <div class="team-member"><strong>Lead Developers:</strong></div>
+                <div class="team-member">• Jainil Patel</div>
+                <div class="team-member">• Jayvardhan Israni</div>
+                
+                <div class="team-member" style="margin-top: 15px;"><strong>Mentor:</strong></div>
+                <div class="team-member">• Mukesh Bind</div>
+                
+                <div class="team-member" style="margin-top: 15px;"><strong>Institution:</strong></div>
+                <div class="team-member">• Navrachana Vidyani Vidyalaya, Vadodara</div>
+            </div>
+        </div>
+
+        <!-- Key Features & Capabilities Section -->
+        <div class="section">
+            <h2>Technical Capabilities & Features</h2>
+            
+            <h3>Primary Functions</h3>
+            <div class="capability-grid">
+                <div class="capability-card">
+                    <h4>🔍 Fire Detection</h4>
+                    <p>Advanced sensors and cameras detect flames and heat signatures automatically</p>
+                </div>
+                <div class="capability-card">
+                    <h4>🤖 Autonomous Movement</h4>
+                    <p>Navigates through buildings along designated paths without human intervention</p>
+                </div>
+                <div class="capability-card">
+                    <h4>🧯 Fire Suppression</h4>
+                    <p>Carries fire extinguishers and deploys nitrogen fire-suppression balls for larger fires</p>
+                </div>
+                <div class="capability-card">
+                    <h4>📍 GPS Emergency Alerts</h4>
+                    <p>Automatically sends GPS coordinates and triggers phone calls and SMS alerts</p>
+                </div>
+                <div class="capability-card">
+                    <h4>💨 Victim Rescue Support</h4>
+                    <p>Equipped with mini oxygen cylinders, masks, and first-aid kits</p>
+                </div>
+                <div class="capability-card">
+                    <h4>💡 Navigation Assistance</h4>
+                    <p>Lights and sirens guide trapped people toward safe exits</p>
+                </div>
+            </div>
+
+            <h3>Advanced Systems</h3>
+            <ul class="feature-list">
+                <li><strong>Communication System:</strong> GPS and GSM automatic alert system for emergency notifications during fire events</li>
+                <li><strong>Real-time Monitoring:</strong> Camera surveillance system for continuous observation of fire zones</li>
+                <li><strong>Mini Rescue Robot "Anuj":</strong> A secondary rover designed for confined spaces and air-quality monitoring</li>
+                <li><strong>Victim Assistance Package:</strong> Oxygen masks, mini oxygen cylinders, and comprehensive first-aid kits</li>
+                <li><strong>Safety Navigation:</strong> Advanced sirens and flashing lights to guide victims to exits</li>
+            </ul>
+        </div>
+
+        <!-- Recognition & Awards Section -->
+        <div class="section">
+            <h2>Awards & Recognition</h2>
+            
+            <h3>National & International Achievements</h3>
+            <div class="achievement-box">
+                <strong>🏆 Technical Solution Award</strong>
+                <p>World Robot Olympiad 2024 National Championship - Recognized among 700+ competing teams in the Future Innovator category</p>
+            </div>
+
+            <div class="achievement-box">
+                <strong>💰 Government Innovation Grant</strong>
+                <p>Ministry of Education Innovation Cell - ₹1.5 lakh approved for industrial prototype development. Ranked among the top 20 innovation projects nationwide</p>
+            </div>
+
+            <h3>Competition Scale & Progression</h3>
+            <p>Pralay Shamak progressed through an incredibly competitive selection process:</p>
+            <ul class="feature-list">
+                <li><strong>6.7 lakh students</strong> participated in the School Innovation Marathon</li>
+                <li><strong>2 lakh innovation projects</strong> submitted for evaluation</li>
+                <li>Selected among <strong>top 1,500 projects</strong> nationwide</li>
+                <li>Advanced to <strong>e-pitching round</strong> for technical evaluation</li>
+                <li>Made it to <strong>top 200 finalists</strong> nationally</li>
+                <li>Received <strong>government funding approval</strong> for prototype development</li>
+            </ul>
+
+            <h3>Institutional & Regional Awards</h3>
+            <ul class="feature-list">
+                <li><strong>Best Innovation Stall</strong> - IIC Regional Meet at Entrepreneurship Development Institute of India</li>
+                <li><strong>Winner's Certificate</strong> - School Innovation Contest organized by the Ministry of Education Innovation Cell</li>
+                <li><strong>Gold Medal</strong> - WRO Gujarat Regional</li>
+                <li><strong>Silver Medal</strong> - WRO Gujarat Regional</li>
+                <li><strong>Bronze Medal</strong> - Robo Mission regional competitions</li>
+                <li><strong>Featured Showcase</strong> - Akhil Bharatiya Shiksha Samagam at Bharat Mandapam</li>
+                <li><strong>National Rank 1</strong> - WRO India Season 2024 (Future Innovators category)</li>
+                <li><strong>Startup Showcase</strong> - Featured at NuVenture 2025 event</li>
+            </ul>
+        </div>
+
+        <!-- Media Coverage Section -->
+        <div class="section">
+            <h2>Media Coverage & Recognition</h2>
+            
+            <h3>Major News & Publications</h3>
+            <ul class="feature-list">
+                <li><strong>The Times of India:</strong> Comprehensive coverage of the project development and achievements - featured on front page</li>
+                <li><strong>Industrial Automation India:</strong> Technical innovation article highlighting communication systems and real-world applications</li>
+                <li><strong>India Automation Challenge:</strong> Recognition as a leading autonomous firefighting solution</li>
+                <li><strong>National Television:</strong> Featured during Maker Fest exhibitions</li>
+                <li><strong>Technology Brochures:</strong> School Innovation Brochure by Navrachana Vidyani Vidyalaya</li>
+            </ul>
+
+            <h3>Key Recognition Highlights</h3>
+            <ul class="feature-list">
+                <li>Government-supported safety innovation with real-world disaster response applications</li>
+                <li>Example of student innovation addressing critical national safety challenges</li>
+                <li>Low-cost autonomous solution for disaster mitigation systems</li>
+                <li>Recognized as a viable alternative to traditional firefighting methods</li>
+            </ul>
+        </div>
+
+        <!-- Innovation Impact Section -->
+        <div class="section">
+            <h2>Real-World Impact & Innovation</h2>
+            
+            <h3>Problem-Solving Approach</h3>
+            <p>Pralay Shamak represents a groundbreaking approach to disaster management by combining:</p>
+            <ul class="feature-list">
+                <li>Advanced robotics and autonomous navigation technology</li>
+                <li>Real-time communication and emergency alert systems</li>
+                <li>Comprehensive victim support and rescue capabilities</li>
+                <li>Cost-effective design for widespread adoption</li>
+                <li>Integration of multiple safety systems in a single platform</li>
+            </ul>
+
+            <h3>Operational Advantages</h3>
+            <ul class="feature-list">
+                <li>Eliminates human risk in high-temperature, high-hazard environments</li>
+                <li>Provides immediate response without delay</li>
+                <li>Continuous monitoring and real-time reporting capabilities</li>
+                <li>Multi-functional platform reducing equipment deployment time</li>
+                <li>Scalable solution applicable to various fire emergency scenarios</li>
+            </ul>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="section">
+            <h2>Project Summary</h2>
+            <p>Pralay Shamak stands as a testament to youth innovation and the power of technology to save lives. Through dedicated development, rigorous testing, and national recognition, this autonomous firefighting robot has demonstrated its potential to revolutionize emergency response systems in India. With government backing, industry recognition, and multiple awards, the project is positioned to transition from innovation to real-world implementation.</p>
+            <p>The project exemplifies how young innovators can tackle critical societal challenges through engineering excellence, creative problem-solving, and perseverance - making it a beacon for future generations of engineers and innovators.</p>
+        </div>
+
+        <!-- Digital Footprint Section -->
+        <div class="section">
+            <h2>🔎 Digital Footprint & Online Presence</h2>
+            <p>Pralay Shamak has established a significant presence across India's innovation ecosystem, with mentions spanning news media, government programs, competitions, exhibitions, and academic institutions. The project currently appears in approximately <strong>40-70 online mentions</strong> across various platforms.</p>
+
+            <h3>Digital Presence by Category</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                <thead>
+                    <tr style="background: rgba(255, 107, 53, 0.2); border-bottom: 2px solid #ff6b35;">
+                        <th style="padding: 15px; text-align: left; color: #ff6b35;">Category</th>
+                        <th style="padding: 15px; text-align: center; color: #ff6b35;">Mentions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                        <td style="padding: 12px 15px;">News Media Coverage</td>
+                        <td style="text-align: center; padding: 12px 15px;">2–5</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                        <td style="padding: 12px 15px;">School & Institutional Pages</td>
+                        <td style="text-align: center; padding: 12px 15px;">5–10</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                        <td style="padding: 12px 15px;">Government Innovation Program Documentation</td>
+                        <td style="text-align: center; padding: 12px 15px;">5–10</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                        <td style="padding: 12px 15px;">Competition Results & Rankings</td>
+                        <td style="text-align: center; padding: 12px 15px;">5–15</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                        <td style="padding: 12px 15px;">Technology Exhibitions & Events</td>
+                        <td style="text-align: center; padding: 12px 15px;">5–10</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                        <td style="padding: 12px 15px;">PDF Brochures & Reports</td>
+                        <td style="text-align: center; padding: 12px 15px;">10–20</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 15px;">Technology Articles & Blogs</td>
+                        <td style="text-align: center; padding: 12px 15px;">5–10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- News Coverage Section -->
+        <div class="section">
+            <h2>1. National News Coverage</h2>
+            
+            <h3>Coverage in The Times of India</h3>
+            <p>Pralay Shamak developed by <strong>Jainil Patel</strong> and <strong>Jayvardhan Israni</strong> received prominent national media attention after winning recognition at robotics competitions. The articles describe it as a <strong>life-saving firefighting robot created after major fire tragedies in Gujarat</strong>, including the Surat Takshashila fire and the Rajkot TRP Game Zone fire.</p>
+            
+            <div class="achievement-box">
+                <strong>Key News Articles:</strong>
+                <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                    <li style="padding: 8px 0;"><a href="https://timesofindia.indiatimes.com/city/vadodara/innovative-teens-create-firefighting-robot-to-save-lives/articleshow/114158226.cms" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">▹ "Innovative Teens Create Firefighting Robot to Save Lives" - The Times of India (Vadodara)</a></li>
+                    <li style="padding: 8px 0;"><a href="https://timesofindia.indiatimes.com/city/ahmedabad/class-8-boys-fire-fighting-robot-gets-natl-recognition/articleshow/120074374.cms" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">▹ "Class 8 Boys' Fire-fighting Robot Gets National Recognition" - The Times of India (Ahmedabad)</a></li>
+                </ul>
+            </div>
+
+            <h3>Technical Details Reported</h3>
+            <ul class="feature-list">
+                <li>Autonomous robot with fire sensors and cameras</li>
+                <li>Automatic navigation through buildings</li>
+                <li>Fire extinguishers for suppression</li>
+                <li>Nitrogen fire-suppression balls for larger fires</li>
+                <li>GPS location alerts via calls and messages</li>
+                <li>Oxygen cylinders, masks, and first-aid kits</li>
+                <li>Mini rescue rover called "Anuj"</li>
+            </ul>
+        </div>
+
+        <!-- Government Programs Section -->
+        <div class="section">
+            <h2>2. Government Innovation Programs</h2>
+            
+            <h3>School Innovation Marathon - National Recognition</h3>
+            <p>Pralay Shamak was selected for funding under the <strong>School Innovation Marathon</strong>, organized by:</p>
+            <ul class="feature-list">
+                <li>Atal Innovation Mission</li>
+                <li>NITI Aayog</li>
+                <li>UNICEF YuWaah</li>
+            </ul>
+
+            <h3>Competitive Selection Process</h3>
+            <p>Out of <strong>over 2 lakh submitted innovation projects</strong>, the robot advanced through multiple evaluation rounds and was selected among top projects nationally:</p>
+            <ul class="feature-list">
+                <li>Initial submission from 2,00,000+ projects</li>
+                <li>Selected among top 1,500 projects nationwide</li>
+                <li>Advanced through e-pitching evaluation round</li>
+                <li>Made it to top 200 finalists nationally</li>
+                <li>Approved for government funding</li>
+            </ul>
+
+            <div class="achievement-box">
+                <strong>💰 Funding Award:</strong>
+                <p>₹1.5 lakh funding from the Ministry of Education Innovation Cell for industrial prototype development</p>
+            </div>
+        </div>
+
+        <!-- Engineering & Industry Section -->
+        <div class="section">
+            <h2>3. Engineering & Automation Industry Recognition</h2>
+            
+            <p>The project has been highlighted in innovation feature articles within the robotics and automation industry.</p>
+
+            <div class="achievement-box">
+                <strong>Industrial Automation Magazine Feature:</strong>
+                <p><a href="https://www.industrialautomationindia.in/articles/iac-2025-bridge-academia-industry-innovation-indian-engineers" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">IAC 2025: Bridging Academia and Industry Innovation - Industrial Automation India</a></p>
+            </div>
+
+            <h3>Reported System Capabilities</h3>
+            <ul class="feature-list">
+                <li>GPS/GSM emergency alert system</li>
+                <li>Real-time camera monitoring of fire zones</li>
+                <li>Oxygen masks and cylinders for victim assistance</li>
+                <li>Comprehensive first-aid kit</li>
+                <li>Multiple fire extinguishing systems</li>
+                <li>Warning lights and emergency sirens</li>
+                <li>Deployable mini rescue rover "Anuj"</li>
+            </ul>
+
+            <p><em>The robot was described as a <strong>government-backed safety innovation designed for disaster response</strong></em></p>
+        </div>
+
+        <!-- Institutional Recognition Section -->
+        <div class="section">
+            <h2>4. Institutional Recognition & Academic Excellence</h2>
+            
+            <h3>Navrachana Vidyani Vidyalaya - STEM Achievements</h3>
+            
+            <div class="achievement-box">
+                <strong>Official Documentation:</strong>
+                <p><a href="https://vidyani.navrachana.in/science-and-technology/" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">Science & Technology Achievement Page - Navrachana Vidyani Vidyalaya</a></p>
+            </div>
+
+            <h3>Major Institutional Highlights</h3>
+            <ul class="feature-list">
+                <li><strong>Best Innovation Stall</strong> - IIC Regional Meet at Entrepreneurship Development Institute</li>
+                <li><strong>Project Showcase</strong> - Akhil Bharatiya Shiksha Samagam in New Delhi (National Education Event)</li>
+                <li><strong>Recognition</strong> - School Innovation Contest by Ministry of Education Innovation Cell</li>
+                <li><strong>Featured</strong> - School Innovation Brochure and Technology Reports</li>
+            </ul>
+
+            <h3>Project Team (Institutional Record)</h3>
+            <ul class="feature-list">
+                <li><strong>Developers:</strong> Jainil Patel, Jayvardhan Israni</li>
+                <li><strong>Mentor:</strong> Mukesh Bind</li>
+                <li><strong>Institution:</strong> Navrachana Vidyani Vidyalaya, Vadodara</li>
+            </ul>
+        </div>
+
+        <!-- Innovation Challenge Section -->
+        <div class="section">
+            <h2>5. Industry Challenge & Innovation Competitions</h2>
+            
+            <h3>India Automation Challenge Listing</h3>
+            
+            <div class="achievement-box">
+                <strong>Innovation Showcase:</strong>
+                <p><a href="https://www.linkedin.com/pulse/india-automation-challenge-2025-winners-announced-9txic" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">India Automation Challenge 2025 - Winners Announced on LinkedIn</a></p>
+            </div>
+
+            <p>The project was recognized in the India Automation Challenge innovation showcase as:</p>
+            <ul class="feature-list">
+                <li>Autonomous firefighting robot solution</li>
+                <li>Advanced fire detection sensors</li>
+                <li>Fire-suppression fireballs technology</li>
+                <li>Comprehensive victim safety equipment</li>
+                <li>Cost-effective disaster-response technology</li>
+            </ul>
+        </div>
+
+        <!-- Technology Exhibitions Section -->
+        <div class="section">
+            <h2>6. Technology Festivals & Exhibition Showcases</h2>
+            
+            <h3>Maker Fest Vadodara</h3>
+            <p>The robot was showcased during <strong>Maker Fest Vadodara</strong>, where it also appeared on <strong>national television coverage by Aaj Tak</strong>, reaching millions of viewers across India.</p>
+
+            <h3>NuVenture Startup Innovation Event</h3>
+            <p>The project prototypes were presented at <strong>NuVenture</strong>, an innovation event hosted by Navrachana University, bringing the project into contact with startup ecosystem stakeholders and potential investors.</p>
+
+            <div class="achievement-box">
+                <strong>Exhibition Documentation:</strong>
+                <p><a href="https://vidyani.navrachana.in/wp-content/uploads/2025/07/Vidyani-Vibes-TechFest-2025-Brochure.pdf" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">Vidyani Vibes TechFest 2025 Brochure - Official Documentation</a></p>
+                <p style="margin-top: 10px;"><a href="https://www.ssipgujarat.in/admin20/files/event/report1_path/6132/NuVenture%20Report%20%281%29.pdf" target="_blank" style="color: #ff6b35; text-decoration: underline; font-weight: 500;">NuVenture Startup Event Report - SSIP Gujarat</a></p>
+            </div>
+        </div>
+
+        <!-- Robotics Competitions Section -->
+        <div class="section">
+            <h2>7. Robotics & STEM Competition Achievements</h2>
+            
+            <h3>World Robot Olympiad (WRO) Success</h3>
+            <p>The project team achieved exceptional recognition in multiple WRO competitions:</p>
+            
+            <ul class="feature-list">
+                <li><strong>National Rank 1</strong> – Future Innovators Category (WRO India Season 2024)</li>
+                <li><strong>Technical Solution Award</strong> – National Championship (competing against 700+ teams)</li>
+                <li><strong>Gold Medal</strong> – Gujarat Regional Level</li>
+                <li><strong>Silver Medal</strong> – Gujarat Regional Level</li>
+                <li><strong>Bronze Medal</strong> – Robo Mission Regional Competition</li>
+            </ul>
+
+            <p>These achievements demonstrate the project's technical excellence, innovation, and competitive viability on national and international platforms.</p>
+        </div>
+
+        <!-- Government Events Section -->
+        <div class="section">
+            <h2>8. Government Innovation Exhibitions & Policymaker Events</h2>
+            
+            <h3>Akhil Bharatiya Shiksha Samagam</h3>
+            <p>The robot was presented at <strong>Akhil Bharatiya Shiksha Samagam</strong>, a prestigious national education innovation event held at <strong>Bharat Mandapam in New Delhi</strong>. This event connects innovators directly with:</p>
+            <ul class="feature-list">
+                <li>Government officials and policymakers</li>
+                <li>National innovation program representatives</li>
+                <li>Startup ecosystem stakeholders</li>
+                <li>Funding agencies and investment bodies</li>
+                <li>Other top student innovators from across India</li>
+            </ul>
+
+            <p>Participation in this event significantly elevated the project's national visibility and credibility.</p>
+        </div>
+
+        <!-- Verified Sources Section -->
+        <div class="section">
+            <h2> All Verified Online Sources</h2>
+            <p>Below are the complete list of verified sources where Pralay Shamak is documented and can be accessed for reference, investment due diligence, or academic research:</p>
+            
+            <div style="margin-top: 25px;">
+                <h3 style="color: #f7931e; margin-bottom: 15px;">📰 News & Media Sources</h3>
+                <ol style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://timesofindia.indiatimes.com/city/vadodara/innovative-teens-create-firefighting-robot-to-save-lives/articleshow/114158226.cms" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ The Times of India - "Innovative Teens Create Firefighting Robot to Save Lives" (Vadodara)
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://timesofindia.indiatimes.com/city/ahmedabad/class-8-boys-fire-fighting-robot-gets-natl-recognition/articleshow/120074374.cms" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ The Times of India - "Class 8 Boys' Fire-fighting Robot Gets National Recognition" (Ahmedabad)
+                        </a>
+                    </li>
+                </ol>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <h3 style="color: #f7931e; margin-bottom: 15px;">🏫 Institutional & Educational Sources</h3>
+                <ol style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://vidyani.navrachana.in/science-and-technology/" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ Navrachana Vidyani Vidyalaya - Science & Technology Achievements Page
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://vidyani.navrachana.in/workshops/" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ Navrachana Vidyani Vidyalaya - Workshop & Innovation Programs Page
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://vidyani.navrachana.in/wp-content/uploads/2025/07/Vidyani-Vibes-TechFest-2025-Brochure.pdf" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ Vidyani Vibes TechFest 2025 Brochure (PDF) - Official School Documentation
+                        </a>
+                    </li>
+                </ol>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <h3 style="color: #f7931e; margin-bottom: 15px;">🏭 Industry & Engineering Publications</h3>
+                <ol style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://www.industrialautomationindia.in/articles/iac-2025-bridge-academia-industry-innovation-indian-engineers" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ Industrial Automation India - IAC 2025: Bridging Academia and Industry Innovation
+                        </a>
+                    </li>
+                </ol>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <h3 style="color: #f7931e; margin-bottom: 15px;">💼 Competition & Award Documentation</h3>
+                <ol style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://www.linkedin.com/pulse/india-automation-challenge-2025-winners-announced-9txic" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ LinkedIn - "India Automation Challenge 2025 – Winners Announced"
+                        </a>
+                    </li>
+                </ol>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <h3 style="color: #f7931e; margin-bottom: 15px;">🎯 Government Initiative & Event Reports</h3>
+                <ol style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://www.ssipgujarat.in/admin20/files/event/report1_path/6132/NuVenture%20Report%20%281%29.pdf" target="_blank" style="color: #ff6b35; font-weight: 500; text-decoration: none; border-bottom: 1px solid #ff6b35;">
+                            ➜ SSIP Gujarat - NuVenture Startup Event Report (PDF) - Official Documentation
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Connected Organizations Section -->
+        <div class="section">
+            <h2>🌐 Connected Organizations & Ecosystem</h2>
+            <p>Pralay Shamak has received recognition and support from India's leading innovation and government organizations:</p>
+            
+            <div class="capability-grid">
+                <div class="capability-card">
+                    <h4>Atal Innovation Mission (AIM)</h4>
+                    <p>Government of India's initiative to foster innovation and entrepreneurship</p>
+                </div>
+                <div class="capability-card">
+                    <h4>NITI Aayog</h4>
+                    <p>National Institute for Transforming India - Policy think tank</p>
+                </div>
+                <div class="capability-card">
+                    <h4>Ministry of Education Innovation Cell</h4>
+                    <p>Government funding and innovation recognition program</p>
+                </div>
+                <div class="capability-card">
+                    <h4>UNICEF YuWaah</h4>
+                    <p>Youth employment and innovation support program</p>
+                </div>
+                <div class="capability-card">
+                    <h4>World Robot Olympiad (WRO)</h4>
+                    <p>International robotics competition platform</p>
+                </div>
+                <div class="capability-card">
+                    <h4>Navrachana Vidyani Vidyalaya</h4>
+                    <p>STEM-focused educational institution supporting innovation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
