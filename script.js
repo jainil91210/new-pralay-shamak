@@ -137,33 +137,17 @@ function triggerFireTransition(targetUrl) {
         window.location.href = targetUrl;
     }, 1800);
 }
-    
-    // Smooth scroll reveal for content (optional enhancement)
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Preload images for smoother transitions
-    const images = [
-        'https://i.ibb.co/q3835vZs/image.png',
-        'https://i.ibb.co/d0rsbGFS/image.png',
-        'https://i.ibb.co/zYXfdCs/image.png',
-        'https://i.ibb.co/jZ6yLykZ/image.png',
-        'https://i.ibb.co/nqJLbmYz/image.png'
-    ];
-    
-    images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
+
+// Preload images for smoother transitions
+const images = [
+    'https://i.ibb.co/q3835vZs/image.png',
+    'https://i.ibb.co/d0rsbGFS/image.png',
+    'https://i.ibb.co/zYXfdCs/image.png',
+    'https://i.ibb.co/jZ6yLykZ/image.png',
+    'https://i.ibb.co/nqJLbmYz/image.png'
+];
+
+images.forEach(src => {
+    const img = new Image();
+    img.src = src;
 });
